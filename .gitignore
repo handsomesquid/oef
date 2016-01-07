@@ -1,28 +1,46 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-# Precompiled Headers
-*.gch
-*.pch
+namespace oef_vaknaam
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string vak = "";
+            double score = 0;
+            Console.WriteLine("Geef eerst een vaknaam en vervolgens de score in. ");
+            Console.WriteLine();
+            //inlezen
+            for (int i = 1; i <= 5; i++)
+            {
+                VakInlezen(i, ref vak, ref score);
+                Verwerk
+            }
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+            Console.ReadLine();
+        }
 
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+        private static void VakInlezen(int vaknummer,ref string vaknaam, ref double vakscore)
+        {
+            string tekstscore;
+            do
+            {
+                Console.Write("Vak " + vaknummer.ToString() + "?");
+                vaknaam = Console.ReadLine();
+                
+            } while (vaknaam =="");
+            do
+            {
+            do
+            {
+                Console.Write("Score op 20 voor " + vaknaam.ToUpper() + " ? ");
+                tekstscore = Console.ReadLine();
+            } while (double.TryParse(tekstscore,out vakscore)==false);
+            } while (!(vakscore>= 0 && vakscore<= 20));
+        }
+    }
+}
