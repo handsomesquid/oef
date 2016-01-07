@@ -11,15 +11,18 @@ namespace oef_vaknaam
         static void Main(string[] args)
         {
             string vak = "";
-            double score = 0;
+            double score=0, totaal=0;
             Console.WriteLine("Geef eerst een vaknaam en vervolgens de score in. ");
             Console.WriteLine();
             //inlezen
             for (int i = 1; i <= 5; i++)
             {
                 VakInlezen(i, ref vak, ref score);
-                Verwerk
+                totaal+=score;
+                Verwerk(vak, score);
             }
+            Console.WriteLine();
+            Console.WriteLine("-> Eindpercentage: " + totaal.ToString() + "%");
 
             Console.ReadLine();
         }
@@ -41,6 +44,30 @@ namespace oef_vaknaam
                 tekstscore = Console.ReadLine();
             } while (double.TryParse(tekstscore,out vakscore)==false);
             } while (!(vakscore>= 0 && vakscore<= 20));
+        }
+
+        private static void Verwerk(string naamvak, double scorevak)
+        {
+            //verwerken van gegevens
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(new String(' ', 10) + naamvak);
+            Console.WriteLine(new String(' ', 10) + "score " + scorevak.ToString() + "/20");
+            Console.Write(new String(' ', 10) + "dit is ");
+            if (scorevak<10)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            double tot;
+            tot = scorevak * 5;
+            Console.WriteLine(tot.ToString() + "%");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.WriteLine();
         }
     }
 }
